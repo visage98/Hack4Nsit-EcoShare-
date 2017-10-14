@@ -1,0 +1,49 @@
+<% layout('layout') %>
+
+<div class="jumbotron" id="navbar-gap">
+    <div class="container">
+        <h1 class="text-center"> Shop Smart, Save Big!</h1>
+        <p class="text-center">Find your favourite products</p>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" name="search_term" id="search">
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-primary btn-lg"><i class="glyphicon-search glyphicon"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row" id="search-results">
+        <% for(let i=0;i<products.length;i++){%>
+        <a href="/product/<%= products[i]._id%>">
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="<%= products[i].image%>">
+                    <div class="caption">
+                        <h3><%= products[i].name%></h3>
+                        <p><%= products[i].category.name%></p>
+                        <p>$&nbsp;<%= products[i].price%></p>
+                    </div>
+                </div>
+            </div>
+        </a>
+        <%}%>
+
+    </div>
+    <br>
+    <br>
+    <br>
+    <ul class="pagination-lg text-center" style="list-style-type: none">
+        <li>
+            <% for(let i=1;i<=pages;i++) { %>
+            <a href="/page/<%= i%>"><%= i%></a>
+            <% } %>
+        </li>
+    </ul>
+
+</div>

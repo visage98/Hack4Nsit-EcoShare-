@@ -1,0 +1,17 @@
+body {
+    padding-top: 80px;
+}
+
+#navbar-gap{
+    margin-top: -4%;
+}
+
+.profile_data{
+    font-size: large;
+    font-weight: bold;
+    margin-top: 3%;
+}
+
+.product-image{
+    width : 100%;
+}
