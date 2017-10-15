@@ -50,6 +50,6 @@ app.engine('ejs',engine);
 app.set('view engine','ejs');
 app.use(userRouter);
 
-app.listen(config.port,function(){
+app.listen(process.env.PORT ||  config.port,function(){
 console.log("Server started on http://localhost:"+config.port);
 });
