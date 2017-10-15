@@ -1,31 +1,32 @@
 <% layout('layout') %>
 
-<div class="jumbotron" id="navbar-gap">
-    <div class="container">
-        <h1> Shop Smart, Save Big!</h1>
-        <p>Starting point to create something more unique</p>
+<link rel="stylesheet" href="/css/landing.css">
+
+<div class="container-fluid site-wrapper">
+
+    <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <img class="img-circle img-responsive img-center center-block" src="<%= user.profile.picture%>" alt="Avatar">
+                </div>
+                <div class="col-md-12 offset-md-2 col-sm-12 profile_data">
+                    <p>Name : <%= user.profile.name%></p>
+                    <p>Email : <%= user.email%></p>
+                    <p>Age: <%= user.profile.age %></p>
+                    <p>Occupation: <%= user.profile.occupation %></p>
+                    <p>Bio: <%= user.profile.bio %></p>
+                </div>
+            </div>
+
+        </div>
+
     </div>
+
 </div>
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-4 col-sm-12">
-            <img class="img-circle img-responsive img-center" src="<%= user.profile.picture%>" alt="Avatar">
-        </div>
-        <div class="col-md-6 offset-md-2 col-sm-12 profile_data">
-            <p>Name : <%= user.profile.name%></p>
-            <p>Email : <%= user.email%></p>
-            <% if (user.address === "" || typeof user.address === 'undefined')  { %>
-            <p>Address: <span style="color: #c0392b;">You have no address</span></p>
-            <% } else { %>
-            <p>Address: <%= user.address %></p>
-            <% } %>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col-sm-8 offset-sm-2 col-md-4">
-            <a class="btn btn-primary btn-lg" href="/editProfile">Edit Profile</a>
-        </div>
-    </div>
+
 </div>

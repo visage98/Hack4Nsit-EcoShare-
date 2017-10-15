@@ -15,8 +15,10 @@ let UserSchema = new Schema({
         picture: {type : String, default: ""},
         occupation: {type : String, default: ""},
         age: Number,
-        bio: {type : String, default: ""}
-    }
+        bio: {type : String, default: ""},
+        picture: {type : String, default: ""}
+    },
+    liked : [{type : Schema.Types.ObjectId}]
 });
 
 //Hashing the password before saving into the database
@@ -34,12 +36,12 @@ UserSchema.pre('save', function (next) {
    });
 });
 
-// UserSchema.methods.gravatar = function (size) {
-//     if(!this.size) size=200;
-//     if(!this.email) return 'https://gravatar.com/avatar/?s='+size+'&d=wavatar';
-//     let md5 = crypto.createHash('md5').update(this.email).digest('hex');
-//     return 'https://gravatar.com/avatar/'+md5+'?s='+size+'&d=wavatar';
-// }
+UserSchema.methods.gravatar = function (size) {
+    if(!this.size) size=200;
+    if(!this.email) return 'https://gravatar.com/avatar/?s='+size+'&d=wavatar';
+    let md5 = crypto.createHash('md5').update(this.email).digest('hex');
+    return 'https://gravatar.com/avatar/'+md5+'?s='+size+'&d=wavatar';
+}
 
 //Comparing password with the hash stored in DB
 

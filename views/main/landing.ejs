@@ -1,0 +1,35 @@
+<% layout('layout')%>
+
+
+<link rel="stylesheet" href="/css/landing.css">
+
+<div class="container-fluid site-wrapper">
+
+    <div class="site-wrapper-inner">
+
+        <div class="cover-container">
+
+            <div class="inner cover">
+                <h1 class="cover-heading">How are you feeling?</h1>
+            </div>
+            <br>
+            <form action="/stories">
+                <div id="slidecontainer">
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="/images/sad.png" style="max-height: 30px;display:inline-block;float: left;">
+                            <img src="/images/happy.png" style="max-height:30px;display:inline-block;float:right">
+                            <br>
+                            <input type="range" min="-50" max="50" value="0" class="slider" id="myRange" name="happiness" style="display:inline-block">
+                        </div>
+                    </div>
+                    <br>
+                    <p>Happiness : <span id="demo"></span></p>
+                </div>
+                <button type="submit" id="submit" class="btn btn-success btn-lg">Go</button>
+            </form>
+        </div>
+
+    </div>
+
+</div>

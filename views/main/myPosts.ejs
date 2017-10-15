@@ -1,0 +1,46 @@
+<% layout('layout')%>
+
+<link rel="stylesheet" href="/css/stories.css">
+<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+
+<div class="container">
+    <div>
+        <div class="qa-message-list">
+            <% for(let i=0;i<stories.length;i++) { %>
+            <div class="message-item" id="m16">
+                <div class="message-inner">
+                    <div class="message-head clearfix">
+                        <div class="avatar pull-left"><a href="#"><img src="<%= picture%>"></a></div>
+                        <div class="user-detail">
+                            <h5 class="handle">
+                                <%= stories[i].author.profile.name%>
+                                <div style="float: right">
+                                    <h4>Happiness : <span><%= stories[i].happiness%></span></h4>
+                                </div>
+                            </h5>
+                            <div class="post-meta">
+                                <div class="asker-meta">
+                                    <span class="qa-message-what"></span>
+                                    <span class="qa-message-when">
+												<span class="qa-message-when-data"><%= stories[i].created_at%></span>
+											</span>
+                                    <span class="qa-message-who">
+												<span class="qa-message-who-pad">by </span>
+												<span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko"><%= stories[i].author.profile.name%></a></span>
+											</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qa-message-content message-head">
+                        <%= stories[i].text%>
+                    </div>
+                    <%= stories[i].likes%>
+                    <i class="fa fa-heart-o fa-lg reactions" aria-hidden="true"></i>
+                </div></div>
+            <% } %>
+
+        </div>
+    </div>
+</div>
+

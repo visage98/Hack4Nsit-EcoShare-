@@ -1,0 +1,83 @@
+<% layout('layout')%>
+
+<link rel="stylesheet" href="/css/stories.css">
+<link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+<script src="/js/RadialBar.js"></script>
+<script src="/js/radialBarCustom.js"></script>
+
+<div class="container-fluid">
+    <div class="col-md-3 circular-bar">
+        <canvas id="paper"></canvas>
+    </div>
+    <div class="timeline col-md-9">
+        <div class="qa-message-list" id="wallmessages">
+            <% for(let i=0;i<stories.length;i++) { %>
+            <div class="message-item" id="m16">
+                <div class="message-inner">
+                    <div class="message-head clearfix">
+                        <div class="avatar pull-left"><a href="#"><img src="<%= stories[i].author.profile.picture%>"></a></div>
+                        <div class="user-detail">
+                            <h5 class="handle">
+                                <%= stories[i].author.profile.name%>
+                                <div style="float: right">
+                                    <h4>Happiness : <span><%= stories[i].happiness%></span></h4>
+                                </div>
+                            </h5>
+                            <div class="post-meta">
+                                <div class="asker-meta">
+                                    <span class="qa-message-what"></span>
+                                    <span class="qa-message-when">
+												<span class="qa-message-when-data"><%= stories[i].created_at%></span>
+											</span>
+                                    <span class="qa-message-who">
+												<span class="qa-message-who-pad">by </span>
+												<span class="qa-message-who-data"><a href="./index.php?qa=user&qa_1=Oleg+Kolesnichenko"><%= stories[i].author.profile.name%></a></span>
+											</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qa-message-content message-head">
+                        <%= stories[i].text%>
+                    </div>
+                    <form action="/like" method="post">
+                        <input type="hidden" value="<%= stories[i]._id%>" name="id">
+                        <input type="hidden" value="<%= happiness%>" name="happiness">
+                        <%= stories[i].likes%>
+                        <% if(JSON.stringify(liked).includes(JSON.stringify(stories[i]._id))) { %>
+                        <i style="color: red" class="fa fa-heart fa-lg reactions" aria-hidden="true"></i>
+                        <% } else { %>
+                        <a onclick="$(this).closest('form').submit()" href="#" type="submit" id="mylike"><i class="fa fa-heart-o fa-lg reactions" aria-hidden="true"></i></a>
+                        <% } %>
+                    </form>
+                </div></div>
+            <% } %>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="widget-area no-padding blank">
+                    <div class="status-upload">
+                        <form method="post">
+                            <textarea placeholder="Write a story." id="story-text" name="text"></textarea>
+                            <input type="hidden" name="happiness" value="<%= happiness%>">
+                            <ul>
+                                <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
+                                <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
+                                <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
+                                <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+                            </ul>
+                            <button type="submit" class="btn btn-success btn-lg green" id="share"><i class="fa fa-share"></i> Share</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<input type="hidden" value="<%= happiness%>" id="happy-level">
+

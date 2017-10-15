@@ -6,6 +6,10 @@ body {
     margin-top: -4%;
 }
 
+.navbar{
+    margin-bottom:0;
+}
+
 .profile_data{
     font-size: large;
     font-weight: bold;
@@ -14,4 +18,10 @@ body {
 
 .product-image{
     width : 100%;
+}
+
+.center-block {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
