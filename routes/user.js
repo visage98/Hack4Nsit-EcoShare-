@@ -40,9 +40,6 @@ router.get('/mood',function (req, res, next) {
 
 router.get('/stories', checkLoggedIn,function (req, res, next) {
     let happiness = parseInt(req.query.happiness);
-    localStorage.setItem(JSON.stringify(req.user._id), JSON.stringify({
-        inital : happiness
-    }));
     Stories.find({happiness: {$gt:-1}}).sort({happiness:-1}).populate('author').exec(function (err, result) {
         if(err) return next(err);
         User.findById(req.user._id, function (err, user) {
